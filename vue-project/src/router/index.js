@@ -5,7 +5,7 @@ import Home from "../views/Home.vue";
 // import IfExam from "../views/IfExam.vue";
 // import EventExam from "../views/EventExam.vue";
 // import EventExam from "../views/WatchExam.vue";
-import EventExam from "../views/ComponentExam2.vue";
+import School from "../views/ComponentExam9.vue";
 
 const routes = [
   {
@@ -25,7 +25,7 @@ const routes = [
   {
     path: "/school",
     name: "School",
-    component: EventExam,
+    component: School,
   },
 ];
 

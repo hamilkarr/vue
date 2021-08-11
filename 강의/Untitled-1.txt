@@ -1,0 +1,2 @@
+vue-project\src\views\ComponentExam6.vue 
+  실행시 덧셈계산으로 안됨.
