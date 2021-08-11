@@ -5,7 +5,7 @@ import Home from "../views/Home.vue";
 // import IfExam from "../views/IfExam.vue";
 // import EventExam from "../views/EventExam.vue";
 // import EventExam from "../views/WatchExam.vue";
-import School from "../views/ComponentExam9.vue";
+import School from "../views/ComponentExam12.vue";
 
 const routes = [
   {

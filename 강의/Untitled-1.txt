@@ -1,2 +1,3 @@
-vue-project\src\views\ComponentExam6.vue 
-  실행시 덧셈계산으로 안됨.
+app.use((req,res,next) => {
+  res.header("Access-Control-Allow-Origin","*")
+});
