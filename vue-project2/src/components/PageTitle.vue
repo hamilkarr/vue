@@ -1,3 +1,14 @@
 <template>
-  <h1>제목....</h1>
+  <h2>{{ title }}</h2>
 </template>
+<script>
+export default {
+  props: {
+    title: {
+      type: String,
+      default: "기본 페이지 제목",
+    },
+    title2: {},
+  },
+};
+</script>
