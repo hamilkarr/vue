@@ -14,6 +14,9 @@
 
   <Discount />
 
+  <button @click="priceSort()">가격순 정렬</button>
+  <button @click="sortBack()">되돌리기</button>
+
   <Card
     @openModal="
       모달창열렸니 = true;
@@ -36,6 +39,7 @@ export default {
   components: { Discount, Modal, Card },
   data() {
     return {
+      원룸들오리지널: [...data],
       오브젝트: { name: "kim", age: 20 },
       누른거: 0,
       원룸들: data,
@@ -43,7 +47,18 @@ export default {
       메뉴들: ["Home", "Shop", "About"],
     };
   },
-  methods: {},
+  methods: {
+    priceSort() {
+      this.원룸들.sort(function (a, b) {
+        return a.title < b.title ? -1 : a.title > b.title ? 1 : 0;
+      });
+    },
+    // 가격 낮은순 정렬
+    // 상품명 가나다순 정렬
+    sortBack() {
+      this.원룸들 = [...this.원룸들오리지널];
+    },
+  },
 };
 </script>
 
@@ -52,7 +67,7 @@ export default {
   transform: translateY(-1000px);
 }
 .fade-enter-active {
-  transition: all 1s;
+  transition: all 0.5s;
 }
 .fade-enter-to {
   transform: translateY(0px);
@@ -62,7 +77,7 @@ export default {
   opacity: 1;
 }
 .fade-leave-active {
-  transition: all 1s;
+  transition: all 0.5s;
 }
 .fade-leave-to {
   opacity: 0;
