@@ -1,10 +1,12 @@
 <template>
-  <Modal
-    @closeModal="모달창열렸니 = false"
-    :원룸들="원룸들"
-    :누른거="누른거"
-    :모달창열렸니="모달창열렸니"
-  />
+  <transition name="fade">
+    <Modal
+      @closeModal="모달창열렸니 = false"
+      :원룸들="원룸들"
+      :누른거="누른거"
+      :모달창열렸니="모달창열렸니"
+    />
+  </transition>
 
   <div class="menu">
     <a v-for="i in 메뉴들" :key="i">{{ i }}</a>
@@ -46,6 +48,26 @@ export default {
 </script>
 
 <style>
+.fade-enter-from {
+  transform: translateY(-1000px);
+}
+.fade-enter-active {
+  transition: all 1s;
+}
+.fade-enter-to {
+  transform: translateY(0px);
+}
+
+.fade-leave-from {
+  opacity: 1;
+}
+.fade-leave-active {
+  transition: all 1s;
+}
+.fade-leave-to {
+  opacity: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
