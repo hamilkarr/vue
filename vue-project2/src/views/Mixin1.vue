@@ -1,10 +1,18 @@
+
 <script>
 import commonLib from "../lib/common.js";
 export default {
   mixins: [commonLib],
   mounted() {
-    const result = this.$sum(20, 30);
-    console.log(result);
+    console.log(this.getData());
+  },
+  methods: {
+    async getData() {
+      return await this.$httpRequest("http://localhost:3000");
+    },
   },
 };
 </script>
+
+<style>
+</style>
