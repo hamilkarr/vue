@@ -1,0 +1,46 @@
+<template>
+  <textarea v-model="message"></textarea>
+  <br />
+
+  <select v-model="city">
+    <option value="02">서울</option>
+    <option value="032">인천</option>
+    <option value="051">부산</option>
+  </select>
+  <br />
+  <label>
+    <input
+      type="checkbox"
+      v-model="checked"
+      true-value="yes"
+      false-value="no"
+    />{{ checked }}
+  </label>
+  <label> <input type="checkbox" v-model="fruits" value="Apple" />Apple </label>
+  <label> <input type="checkbox" v-model="fruits" value="Melon" />Melon </label>
+  <label>
+    <input type="checkbox" v-model="fruits" value="Orange" />Orange
+  </label>
+  <button @click="checkValue">확인</button>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      fruits: [],
+      checked: true,
+      message: "textarea에 입력될 문장....",
+      city: "032",
+    };
+  },
+  methods: {
+    checkValue() {
+      console.log(this.fruits);
+    },
+  },
+};
+</script>
+
+<style>
+</style>

@@ -13,6 +13,7 @@
   </div>
 
   <Discount />
+  <p>지금 결제하면 {{ amount }}% 할인</p>
 
   <button @click="priceSort()">가격순 정렬</button>
   <button @click="sortBack()">되돌리기</button>
@@ -39,6 +40,8 @@ export default {
   components: { Discount, Modal, Card },
   data() {
     return {
+      amount: 30,
+      showDiscount: true,
       원룸들오리지널: [...data],
       오브젝트: { name: "kim", age: 20 },
       누른거: 0,
@@ -47,6 +50,13 @@ export default {
       메뉴들: ["Home", "Shop", "About"],
     };
   },
+
+  mounted() {
+    setInterval(() => {
+      if (this.amount > 0) this.amount--;
+    }, 500);
+  },
+
   methods: {
     priceSort() {
       this.원룸들.sort(function (a, b) {

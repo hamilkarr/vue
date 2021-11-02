@@ -27,6 +27,11 @@ export default {
       }
     },
   },
+  beforeUpdate() {
+    if (this.month <= 2) {
+      alert("3달 이상부터 팝니다.");
+    }
+  },
   props: {
     원룸들: Array,
     누른거: Number,

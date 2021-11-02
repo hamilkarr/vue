@@ -1,13 +1,17 @@
 <template>
-  <h2>{{ likes }}</h2>
+  <h2>{{ title }}</h2>
 </template>
 <script>
 export default {
   props: {
-    likes: {
-      type: Number,
-      default: 10,
+    title: {
+      type: String,
+      default: "기본 제목...",
     },
+  },
+  inject: ["provideTitle"],
+  mounted() {
+    console.log("provideTitle", this.provideTitle);
   },
 };
 </script>

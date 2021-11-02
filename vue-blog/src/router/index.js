@@ -1,12 +1,17 @@
-import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
-import DataBinding from "../views/DataBinding6.vue";
+import { createRouter, createWebHashHistory } from "vue-router";
+import Home from "../components/Home.vue";
+import List from "../components/List.vue";
 
 const routes = [
   {
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/list",
+    name: "List",
+    component: List,
   },
   {
     path: "/about",
@@ -17,15 +22,10 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
-  {
-    path: "/databinding",
-    name: "DataBinding",
-    component: DataBinding,
-  },
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(),
   routes,
 });
 
