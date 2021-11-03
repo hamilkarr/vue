@@ -5,6 +5,7 @@ function calculator() {
     num2: 0,
     result: computed(() => state.num1 + state.num2),
   });
+
   return toRefs(state);
 }
 
