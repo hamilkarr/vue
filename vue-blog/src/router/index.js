@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../components/Home.vue";
 import List from "../components/List.vue";
+import Detail from "../components/Detail.vue";
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: "/list",
     name: "List",
     component: List,
+  },
+  {
+    path: "/detail/:글번호",
+    name: "Detail",
+    component: Detail,
   },
   {
     path: "/about",
