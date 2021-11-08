@@ -1,2 +1,3 @@
-<template>메인 페이지...</template>
-
+<template>
+메인 페이지...
+</template>

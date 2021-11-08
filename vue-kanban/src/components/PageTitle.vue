@@ -1,10 +1,3 @@
 <template>
-  <h1 class="page_title"><slot></slot></h1>
+<h1 class='page_title'><slot></slot></h1>
 </template>
-
-<script>
-export default {};
-</script>
-
-<style>
-</style>
