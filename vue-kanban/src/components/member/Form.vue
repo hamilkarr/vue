@@ -32,12 +32,20 @@
     <input type="submit" value="가입하기" v-if="mode == 'join'" />
     <input type="submit" value="수정하기" v-else />
   </form>
+  <MessagePopup ref="message_popup" :message="message" />
 </template>
-
 <script>
 import member from "../../models/member.js";
+import MessagePopup from "../../components/common/Message.vue";
 export default {
   mixins: [member],
+  components: { MessagePopup },
+  data() {
+    return {
+      isHide: true,
+      message: "",
+    };
+  },
   props: {
     mode: {
       type: String,
@@ -55,24 +63,22 @@ export default {
     },
   },
   methods: {
-    formSubmit(e) {
+    async formSubmit(e) {
       e.preventDefault();
       const formData = new FormData(this.$refs.frmMember);
-      // const memId = formData.get("memId");
-      // console.log(memId);
-      //for (let data of formData.entries()) {
-      //console.log(data);
+      let result = {};
       if (this.mode == "join") {
         // 회원 가입
-        this.$join(formData);
+        result = await this.$join(formData);
       } else {
         // 회원 정보 수정
         this.$update(formData);
+      }
+      if (result.message) {
+        this.$refs.message_popup.isHide = false;
+        this.message = result.message;
       }
     },
   },
 };
 </script>
-
-<style>
-</style>

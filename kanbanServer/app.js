@@ -13,7 +13,6 @@ sequelize
   })
   .catch((err) => {
     console.error(err);
-    npm;
   });
 
 app.use(morgan("dev"));

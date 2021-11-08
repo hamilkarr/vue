@@ -15,9 +15,13 @@ const routes = [
     component: List,
   },
   {
-    path: "/detail/:글번호",
+    path: "/detail/:id",
     name: "Detail",
     component: Detail,
+    children: [
+      { path: "/author", component: Author.vue },
+      { path: "/comment", component: Comment.vue },
+    ],
   },
   {
     path: "/about",
