@@ -1,5 +1,5 @@
 export default {
-    created() {
-       
-    }
-}
+  created() {
+    this.$loginInit();
+  },
+};
