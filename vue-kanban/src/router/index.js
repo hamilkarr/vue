@@ -5,6 +5,9 @@ import MyInfo from "../views/member/MyInfo.vue";
 import Login from "../views/member/Login.vue";
 import Logout from "../views/member/Logout.vue";
 
+import KanbanMain from "../views/kanban/Main.vue";
+import KanbanAdd from "../views/kanban/Add.vue";
+
 const routes = [
   {
     path: "/",
@@ -30,6 +33,16 @@ const routes = [
     path: "/my_info",
     name: "Member MyInfo",
     component: MyInfo,
+  },
+  {
+    path: "/kanban",
+    name: "Kanban Main",
+    conponent: KanbanMain,
+  },
+  {
+    path: "/kanban/add",
+    name: "Kanban Add",
+    component: KanbanAdd,
   },
 ];
 

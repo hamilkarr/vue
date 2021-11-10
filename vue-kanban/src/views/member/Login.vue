@@ -40,12 +40,3 @@ export default {
   },
 };
 </script>
-<style>
-input {
-  font-size: 20px;
-  padding: 5px;
-  margin-bottom: 5px;
-  border: 2px solid rgb(51, 51, 51);
-  border-radius: 3px;
-}
-</style>
