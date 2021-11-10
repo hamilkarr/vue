@@ -75,7 +75,12 @@ export default {
         }
       } else {
         // 회원 정보 수정
-        this.$update(formData);
+        result = await this.$update(formData);
+        if (result.success) {
+          const frm = this.$refs.frmMember;
+          frm.memPw.value = "";
+          frm.memPwRe.value = "";
+        }
       }
       if (result.message) {
         this.showMessage(result.message);

@@ -22,14 +22,14 @@ export default {
      * @param {*} data
      */
     async $update(data) {
-      const token = this.$getToken;
+      const token = this.$getToken();
       if (data instanceof FormData) {
-        data.append("token", this.$getToken());
+        data.append("token", token);
       } else {
         data.token = token;
       }
 
-      const result = await this.$request(this.apiURL, data, "POST");
+      const result = await this.$request(this.requestURL, data, "POST");
       console.log(result);
     },
     /**

@@ -22,6 +22,11 @@ router.use(async (req, res) => {
         break;
       case "update": // 회원정보 수정
         const result = await member.update(data);
+        if (!result) {
+          throw new Error("회원 정보 수정에 실패했습니다.");
+        }
+        success = true;
+        message = "회원정보가 수정되었습니다.";
         break;
       case "login": // 로그인 처리
         const token = await member.login(data);
@@ -31,13 +36,15 @@ router.use(async (req, res) => {
         success = true;
         returnData = { token };
         break;
-      case "get_member": // 토큰으로 회원 정보 조회
-        const result = await member.getByToken(data.token);
-        if (!result) {
-          throw new Error("토큰으로 회원 조회 실패");
+      /** 토큰으로 회원 정보 조회 */
+      case "get_member":
+        const memberData = await member.getByToken(data.token);
+        if (!memberData) {
+          throw new Error("토큰 회원조회 실패");
         }
+
         success = true;
-        returnData = result;
+        returnData = memberData;
         break;
     }
   } catch (err) {
