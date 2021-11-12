@@ -1,10 +1,55 @@
 /** 칸반 보드 model */
+const {
+  sequelize,
+  Sequelize: { QueryTypes },
+} = require("./index");
 
 const kanban = {
-  addWork(data) {},
+  /** 필수 입력 항목 */
+  required: {
+    // memNo : "회원만 사용 가능한 서비스 입니다.",
+    status: "작업 구분을 선택하세요",
+    subject: "작업명을 입력하세요",
+    content: "작업내용을 입력하세요",
+  },
+
+  async addWork(data) {
+    this.checkData(data);
+    const replacements = {
+      memNo: data.memNo,
+      status: data.status,
+      subject: data.subject,
+      content: data.content,
+    };
+    const sql = `INSERT INTO worklist (memNo, status, subject, content) 
+								VALUES (:memNo, :status, :subject, :content)`;
+    try {
+      const result = await sequelize.query(sql, {
+        replacements,
+        type: QueryTypes.INSERT,
+      });
+      return result[0];
+    } catch (err) {
+      console.error(err);
+      return false;
+    }
+  },
   editWork(data) {},
   deleteWork(idx) {},
   getList() {},
+  /** 데이터 유효성 검사 */
+  checkData(data) {
+    if (data.mode == "edit") {
+      //작업 내용 수정
+      this.required.idx = "작업등록번호가 누락되었습니다.";
+    }
+    const required = this.required;
+    for (let key in this.required) {
+      if (!data[key]) {
+        throw new Error(required[key]);
+      }
+    }
+  },
 };
 
 module.exports = kanban;
