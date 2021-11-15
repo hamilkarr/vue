@@ -1,12 +1,14 @@
 <template>
-  <PageTitle>작업등록</PageTitle>
-  <Form />
+  <PageTitle>작업 목록</PageTitle>
+  <List status="ready" />
+  <List status="progress" />
+  <List status="done" />
 </template>
 <script>
 import PageTitle from "../../components/PageTitle.vue";
-import Form from "../../components/kanban/Form.vue";
+import List from "../../components/kanban/List.vue";
 export default {
-  components: { PageTitle, Form },
+  components: { PageTitle, List },
   created() {
     if (!this.$isLogin()) {
       return this.$router.push({ path: "/login" });

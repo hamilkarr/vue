@@ -44,12 +44,13 @@ export default {
   components: { MessagePopup },
   data() {
     return {
-      picked: "ready",
       message: "",
     };
   },
-  mounted() {
-    this.picked = this.kanban.status;
+  computed: {
+    picked() {
+      return this.kanban.status || "ready";
+    },
   },
   props: {
     mode: {
@@ -73,13 +74,25 @@ export default {
       e.preventDefault();
       const formData = new FormData(this.$refs.frmKanban);
       let result = {};
+      let idx = 0;
       if (this.mode == "add") {
         // 작업 추가
         result = await this.$addWork(formData);
+        idx = result.data.idx;
       } else {
         // 작업 수정
-        this.$editWork(formData);
+        result = await this.$editWork(formData);
+        idx = this.$route.query.idx;
       }
+
+      if (result.success) {
+        this.$router.push({
+          path: "/kanban/view",
+          query: { idx },
+        });
+        return;
+      }
+
       if (result.message) {
         this.$showMessage(this, result.message);
       }
