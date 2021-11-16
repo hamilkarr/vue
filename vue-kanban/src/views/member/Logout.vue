@@ -1,8 +1,8 @@
 <script>
 export default {
-    created() {
-        this.$logOut();
-        location.href='/home';
-    }
-}
+  created() {
+    this.$logOut();
+    this.$router.push({ path: "/login" });
+  },
+};
 </script>
